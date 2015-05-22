@@ -4,7 +4,7 @@
 //
 
 #include <Wire.h>
-
+#include <Servo.h>
 
 #define STATE_NEUTRAL               0
 #define COMMAND_REPORT_HITS         1
@@ -13,6 +13,9 @@
 #define COMMAND_FIRE_LASER_LATER    4
 #define COMMAND_REPORT_CALIBRATION  5
 #define COMMAND_REPORT_VALUE        6
+#define COMMAND_TURN_LASER_LEFT     7
+#define COMMAND_TURN_LASER_CENTER   8
+#define COMMAND_TURN_LASER_RIGHT    9
 #define STATE_ERROR                 255
 
 #define THRESHOLD_OFFSET   100
@@ -23,6 +26,8 @@ int g_iState;
 int g_iCurrentHitCount;
 unsigned long g_uLastHit;
 int g_iCalibrationValue;
+Servo g_sLaserCannon;
+int g_iServoDegrees;
 
 void setup()
 {
@@ -36,6 +41,16 @@ void setup()
   g_iState = STATE_NEUTRAL;
   g_iCurrentHitCount = 0;
   g_uLastHit = 0;
+  
+  //
+  // initialize gun turret servo
+  //
+  
+  g_sLaserCannon.attach(6);                //the laser cannon comes out of pin six
+  g_iServoDegrees = 90;                    //the rotational position, in degrees, of the laser cannon
+  g_sLaserCannon.write(g_iServoDegrees);
+  delay(300);
+
   
   //
   // calibrate hit detection
@@ -67,14 +82,14 @@ void loop()
     {
     case COMMAND_FIRE_LASER: // normal case
       g_iState = STATE_REPORT_FIRED;
-      analogWrite(12, 255);  // turn on laser for half a second
+      analogWrite(12, 255);  // turn on laser for a quarter second
       delay(250);
       analogWrite(12, 0);  
       break;
 
     case COMMAND_FIRE_LASER_LATER: // awkward case were we already reported that we fired
       g_iState = STATE_NEUTRAL;    // don't report after this
-      analogWrite(12, 255);        // turn on laser for half a second
+      analogWrite(12, 255);        // turn on laser for a quarter second
       delay(250);
       analogWrite(12, 0);
       break;
@@ -85,6 +100,26 @@ void loop()
     case COMMAND_REPORT_VALUE:
       // leave state untouched, event handlers will reset it
       break;
+      
+    case COMMAND_TURN_LASER_LEFT:      //turns laser left 5 degrees
+      g_iServoDegrees -= 5;
+      g_sLaserCannon.write(g_iServoDegrees);
+      delay(50);
+      break;
+      
+    case COMMAND_TURN_LASER_CENTER:    //turns laser to the centre
+      g_iServoDegrees = 90;
+      g_sLaserCannon.write(g_iServoDegrees);
+      delay(300);
+      break;    
+      
+    case COMMAND_TURN_LASER_RIGHT:     //turns laser right 5 degrees
+      g_iServoDegrees += 5;
+      g_sLaserCannon.write(g_iServoDegrees);
+      delay(50);
+      break;    
+      
+
       
     case STATE_ERROR:              
       g_iState = STATE_NEUTRAL;    
@@ -101,6 +136,11 @@ void loop()
       // not sure how we got here, but reset
       g_iState = STATE_NEUTRAL;
    }
+   
+   
+  //
+  // Hit detection
+  //
  
   iLightValue = analogRead(0);
   if (iLightValue > g_iCalibrationValue)
@@ -130,7 +170,7 @@ void receiveEvent(int iBytesIn)
   // process commands only if 1) right number of bytes, 2) our special msg header and 3) checksum correct
   //
   
-  if (iBytesIn == 4)
+  if (iBytesIn == 4) // 3 bytes for our message plus an added "0" of padding
   {
     if (Wire.read() == ELF_MSG_HEADER)
     {
@@ -146,6 +186,12 @@ void receiveEvent(int iBytesIn)
             g_iState = COMMAND_FIRE_LASER;
             break;
             
+          case COMMAND_TURN_LASER_LEFT:
+          case COMMAND_TURN_LASER_CENTER:
+          case COMMAND_TURN_LASER_RIGHT:
+            g_iState = iCommand;
+            break;
+
           case COMMAND_REPORT_HITS:
           case COMMAND_REPORT_CALIBRATION:
           case COMMAND_REPORT_VALUE:
@@ -163,6 +209,7 @@ void receiveEvent(int iBytesIn)
       
   //
   // Don't need any more data, but process it anyway (in error case)
+  // should only be the one padding/trailing/end byte
   //
     
   while (Wire.available())
@@ -217,8 +264,13 @@ void requestEvent()
       g_iState = COMMAND_FIRE_LASER_LATER;
       break;
 
+    //
+    // This was the error case, but with the addition of turning I don't
+    // want to add more states just to respond properly, so all the NXT will
+    // get back is 0.
+    //
     default:
-      PUT_INT_BYTES(s,65535)  // essentially an error value, but 0 is pretty forgiving if interpreted as a hit count.
+      PUT_INT_BYTES(s,0)  
       break;
   }
   //
