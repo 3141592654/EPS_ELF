@@ -31,11 +31,11 @@ int g_iServoDegrees;
 
 void setup()
 {
-  pinMode (12, OUTPUT);
+  pinMode (7, OUTPUT);
   pinMode (13, OUTPUT);
   
   analogWrite(13, 255);    // turn on light
-  analogWrite(12, 0);      // turn off laser
+  analogWrite(7, 0);      // turn off laser
 
 
   g_iState = STATE_NEUTRAL;
@@ -46,7 +46,7 @@ void setup()
   // initialize gun turret servo
   //
   
-  g_sLaserCannon.attach(6);                //the laser cannon comes out of pin six
+  g_sLaserCannon.attach(11);                //the laser cannon comes out of pin eleven
   g_iServoDegrees = 90;                    //the rotational position, in degrees, of the laser cannon
   g_sLaserCannon.write(g_iServoDegrees);
   delay(300);
@@ -82,16 +82,16 @@ void loop()
     {
     case COMMAND_FIRE_LASER: // normal case
       g_iState = STATE_REPORT_FIRED;
-      analogWrite(12, 255);  // turn on laser for a quarter second
+      analogWrite(7, 255);  // turn on laser for a quarter second
       delay(250);
-      analogWrite(12, 0);  
+      analogWrite(7, 0);  
       break;
 
     case COMMAND_FIRE_LASER_LATER: // awkward case were we already reported that we fired
       g_iState = STATE_NEUTRAL;    // don't report after this
-      analogWrite(12, 255);        // turn on laser for a quarter second
+      analogWrite(7, 255);        // turn on laser for a quarter second
       delay(250);
-      analogWrite(12, 0);
+      analogWrite(7, 0);
       break;
 
     case STATE_REPORT_FIRED:
