@@ -1,0 +1,13 @@
+	Laser
+The sellers go out of business fairly rapidly. It is sold as a 5 milliwatt laser, though I have measured that they can handle much more than that. The laser itself has a resistance of about 280 ohms, while the rest of the
+circuit has a resistance of about 80 ohms. Lasers will die over time, but they are very cheap (26 cents per laser when I was around) and easily replaced. Lasers should be run with 16-17 volts. Any less than that and they will
+not make an impact. Any more than that and you will burn out the laser. The highest wattage I have subjected it to was ~860 milliwatts (20 volts). This killed the laser. The highest I have subjected it to that didn't kill the
+laser was 16 volts. I have not tried 17 volts.
+	Hit detection
+A0 measures the voltage relative to ground on a scale of 0 to 1024, where 0 is 0 volts and 1024 is 5 volts. The voltage is divided between the 5 volt and the ground by the photoresistor and the resistor. When the
+photoresistor senses more light, its resistance falls and the 5 volt gets divided less, increasing the reading. A laser with an AA battery pack of 16-17 volts should be enough to get the +100 that is necessary. Photoresistors
+came with the Arduino kits - ask Mr. Briggs.
+	Dual Relay Module
+Yellow and Green are normally not connected. However, when voltage is applied to in1, they become connected. Purchased at Vetco.
+	Boxes
+For the laser cutter and 0.125 inch wood. Assembly should be straightforward - align the teeth and use wood glue.
