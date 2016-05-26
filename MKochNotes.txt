@@ -1,0 +1,592 @@
+20 1 2015	Day 00
+______________________
+Mr. briggs showed me the arduino. have photoresistors to detect light, lasers, light.
+communicate from computer to nxt via samantha module. communicate from nxt to arduino by nxt-arduino adapter. communicate from arduino to laser by wires.
+more photoresistors. filters to let in only laser light.
+
+Next step:
+Look up how the NXT communicates.
+Look up how the NXT communicates to arduino.
+Look up how the arduino communicates.
+
+Results:
+looked at:
+http://www.dexterindustries.com/howto/connect-the-arduino-and-the-lego-mindstorms-together/		#Downloaded Arduino_and_NXT_Code from here
+power - probably from the main battery, into the big slot.
+how they conncect:
+SDA = communication
+SCL = some regulation thingy
+NXT SDA slot connects to a row. Arduino SDA slot connects to the same row. bam, they're connected. imagine you connect alligators to each and then attach the alligators to the same lump of metal in the middle.
+Same with SCL, though with a different row. Ground is ditto.
+
+
+21 1 2015	Day 01
+______________________
+looked up robotc. http://www.robotc.net/support/webhelpfiles/. Concluded that learning about RobotC without a RobotC license is hard.
+Plan:
+get RobotC license?	mr. mein states that arduino does not use robotc and that it uses simple c. therefore, if dexter is correct, an arduino robotc will be needed?
+look at mr. briggs' arduino program.
+Get the laser to light up with arduino.
+hook up nxt. run some of the example programs after learning how.
+
+obtained the arduino stuff from mr. briggs. installed the latest version of arduino, 1.06.
+figure out how the arduino program communicates to the arduino board.
+
+22 1 2015	Day 02
+______________________
+mr. mein's friend came in. He talked a good long while, and I listened to him. Afterwards, I looked on the Wikipedia arduino page to understand what the arduino circuit board
+actually does. several of the pins are used for power, some are on/off, and some are variable. Looked at arduino code.
+plan:
+now that I more or less understand the arduino (if not how to command it), I shall attempt to get the arduino and get it powered up with the NXT. Then, I shall try to work my way
+through the dexter tutorial and see how it works out.
+
+28 1 2015	Day 03
+______________________
+found NXT bag. failed to find sufficient batteries or plug, decided to wait for mein to appear. added jumpers to the arduino-nxt communication machine. decided to start 
+organization. mein appeared before i made progress. found batteries, chargers in far right open bin, wire in blue bin. found that as green light turned on, the batteries were 
+charged. put batteries in nxt. attached nxt to arduino. turned on nxt. arduino did not appear to get power. turned off nxt. looked on dexter. determined that power was not obtained
+from the nxt. mr. mein gave me an 9volt to micro-usb to power it. plugged in 9volt. turned on nxt. successful. powered off both. 
+
+plan: find out how to load stuff onto nxt.
+
+29 1 2015	Day 04
+______________________
+continued attempt to learn how to load stuff onto nxt on internet. failed. asked mein. he told me that it was done by installing robotc and pressing send. directed me to the robotc
+website. downloaded. added license. messed around with robot-lego_brick-communication_link_setup. pressed f/m download and rename nxt. at this point, the nxt ran out of power.
+removed batteries, put them into chargers. messed around with comments in RobotC with a baseline of what to do. successfully downloaded program to nxt with 
+robot-compile_and_download_program. Confirmed ability to command nxt by making it shut off. failed to make a beeping program to show more information.
+useful:
+http://help.robotc.net/WebHelpMindstorms/index.htm#Topics/General_C_Programming/Control_Structures.htm%3FTocPath%3DGeneral%2520Programming%7C_____2
+
+plan:
+see if can get nxt to send something, anything to arduino. as of now, i am clueless. as of now, i also have nobody to ask for help. it shall be interesting.
+
+4 2 2015	Day 05
+______________________
+decided to try to send one of the dexter programs to arduino. failed utterly after about an hour of trying. decided that it would really be easier to take the arduino out of the 
+equation. appropriated three batteries, two alligator clips and one battery holder from the physics set. decided that laser would be constant, made laser holder.
+plan:
+get nxt resistance sensor, hook it up to a bunch of photoresistors (the "target") and then have it have a counter of when the resistance goes up beyond a certain point. Also,
+perhaps have the laser attached to an nxt motor port?
+
+5 2 2015	Day 06
+______________________
+asked teis and fisher where to get NXT files. told me to ask Trevor. trevor was not around, asked mein. said i could get it from team computer or trevor nielsen on github. went to
+github. got files. messed around with stuff for an awful bloody long time. determined that it was more or less simple in the percentage-voltage-here-equals-x fashion.
+
+decided to try to find how the sensor ports work to figure out how one could be jury-rigged.
+http://botbench.com/blog/2009/11/08/robotc-i2c-howto-part-i/
+
+11 2 2015	Day 07
+______________________
+messed around with idea to have a magnet drop when resistance increases. informed by mein that this was not such a good idea (not exact words). mein decided to show me simplec.
+plan: mess around with mr. mein attempting to get program to register, programatically, the photoresistor to affect the flashing of the red light.
+
+25 2 2015	Day 08
+______________________
+attempted to find the program that was used in last. did not succeed. adapted a new program, current is known as LaserThing2. messed with the board. mr. mein changed up the wiring
+for the photoresistor. i used a roll of tape and the book to create a stand. program completed to make the red light light up when hit. however, when taking out the serial monitor,
+the hit count disappears. currently, attempting to get it to register long-term.
+plan: get the motor to work. am attempting to get it to spin so it can hit the power button.
+
+26 2 2015	Day 09
+______________________
+messed around with the ping pong ball. it glows when hit by laser. mr. mein made a red water cup to substitute. lasers function even when shot across room. decided to try to interface with nxt. DUN DUN DUH!!!
+plan: go through dexter website and attempt to understand it while singing hatikva.
+
+4 3 2015	UNOFFICIAL DURING EXTRA TIME
+______________________
+Determined that the first example was to be sent to the arduino while said arduino was plugged into the computer. it would make the arduino print the chars of the thing it recieved
+from the nxt to the serial. however, I am still in the dark as to how to get the NXT to send the chars to the arduino in the first place! the second example seems likewise, with the
+arduino sending some information back to the nxt. It appears that example III contains information regarding how to send, and that example IV contains information regarding how to
+send and recieve.
+
+11 3 2015	Day 10
+______________________
+other persons spent several minutes talking about obscene subjects. gave zach a project to make a better laser-holder. built another laser holder for testing, 2 alligator clips, 1 holder, 3 batteries. tested previous program
+to ensure function. success. i believe that i found the correct arduino program and perhaps the correct NXT program. the NXT program did not succeed due to the NXT stating BAD VERSION! and making an angry-sounding beep.
+Looked at dexter page to see if it was out of date. it appears to have been posted about two years ago, so that may be why the programs do not appear to be up to snuff. I updated the version of the NXT via the RobotC,
+and got the program RobotC - Arduino Receive Example.c	to run and give "0"s to the Arduino. I unplugged it, and it stopped. plugged it back in, kept putting out 0s. started it again with it unplugged, got nothing out.
+started up NXT program, put out zeros. unplugged, stopped getting zeros. this is far, far more success than I have ever had. woohoo. at this point, mein notified me that due to the obsolescence of the NXT vis-a-vis the
+competition, the NXT will not be used. i was rather excited about this, though i may be switching devils. i put back the 2 alligator clips, the holder, and the 3 batteries due to the lack of need as zach and teis moved on to
+other pastures.
+
+25 3 2015	Day 11
+______________________
+made LaserPlan2 after mr. mein suggested i keep working on it. decided that a holder could perhaps be made. decided to work on holder.
+
+26 3 2015	Day 12
+______________________
+continued in quest to get the 3d printer to work. worked on holder. designed holder. laser cut holder. added laser to the arduino board.
+
+1 4 2015	Day 13
+______________________
+Laser printed several (many) holder designs. got red cup. 
+
+2 4 2015	Day 14
+______________________
+laser printed 05masonbox, 06masonbox, 07masonbox. between design, printing and assembly, it did indeed take the whole time. designed 08masonbox.
+
+15 4 2015	Day 15
+______________________
+it appears that 09masonbox and 10masonbox had already been printed because they showed up on the printing machine, though i do not entirely know. showed box to briggs with arduino in it and cup on it. he thought it was cool. 
+made modifications to get one piece's teeth to line up better. printed 11masonbox, though reservations exist as to whether it would have been better to print 10masonbox first. assembled 11masonbox. designed and printed
+12masonbox after more modifications (by jove, those teeth are hard to line up!). it lined up pretty well, and i assembled and glued it together, keeping it from falling apart by using the quickgrip clamps.
+
+16 4 2015	Day 16
+______________________
+put the thing together. success. cleaned out box. talked with mein about next steps.
+{
+build 2 laser systems with each one riding on a lego robot. first, build another system. then build nxt connection! dun dun duh.
+}
+made 13masonbox by moving the laser hole up a centimetre in order for it to clear the wall surrounding the red cup when it fires. printed. glued. printed another one. glued it.
+
+22 4 2015	Day 17
+______________________
+moved board and stuff into new model box. asked nolan if he knew where uno board was, said mail briggs and cross. talked with mein, meng and nielsen. mein pointed me to an arduino uno in the box wall thing. promptly 
+requisitioned it and a wire. configured it, placed into other box. found that other box did not accept the usb. mein used the dremel to cut more space for it. booted up arduino. DIFFERENT RESISTORS ON TWO BOARDS!!!
+
+23 4 2015	Day 18
+______________________
+switched out resistors. tested shooting lasers at each other. switched the 3.3 volt one to 5 volts. both functioned. thought about what to do for a while, being very wary about attempting to connect nxt to arduino. after
+attempts to figure out how to get it to connect to the EV3, Mein informed me to buck up or something humorous to that effect. DUN DUN DUH!!! color-coded all the wires in a last-ditch attempt to not have to work on connecting
+them. added in the wires on the arduino side. un-plugged light so as to have a ground. got the nxt to send zeros to the arduino. tied to get it to send other numbers by changing the 0x00 part of "i2c_read_registers_text(0x01,
+0, 10);		// Here we're going to get back "Dexter" because we're writing to the 0x01 register." to 0x05. failed.
+
+29 4 2015	Day 19
+______________________
+mr. mein brought red cups. Yay! tried to find battery charger for nxt batteries. failed, but found the fresh battery bin. commented out one of the lines. zeros came in one at a time. changed second parameter in
+"i2c_read_registers_text(0x00, 0, 10);" to 1. still sent zeros. changed back to zero. blanked out second line. did not send anything. un-blanked second line. changed third parameter to 9. got yet more zeros. changed third
+parameter back to 10. commented out the line containing "sendI2CMsg". no zeros recieved. un-blanked said line. changed "sendI2CMsg(S1, &I2Cmessage[0], return_size);" to "sendI2CMsg(S1, &I2Cmessage[3], return_size);" and also
+added a byte in 3 (5). no responce. changed the five to a zero. still nothing. changed the message back to original. got zeros. set variable equal to zero, set [3] to the variable. zeros. changed variable to 1. I GOT 1S!!!!!!!
+!!!!!! AMAZINGNESSSWOWCOOL!!!!! however, i did not change the variable to [3], and while still set to [0], it still gave 1s! stumpted. changed variable back to 0. it changed back to 0s. god knows. changed variable to 2.
+output changed to 2. god knows why.
+
+30 4 2015	Day 20
+______________________
+tried to use dexter nxt program to send stuff. failed. decided to hack and mix and match the original files to attempt to get it to respond. many attempts to get things to print things to the nxt screen failed. got it to
+print a 1 and a 2. tried to get the arduino to send data to the nxt. failure.
+
+6 5 2015	Day 21
+______________________
+attempted to get numbers to show up on nxt screen using "RobotC - NXT Prints 5.c". success. created backup file to show how to do that. looked up definition of writing to a wire. attempted to send value from arduino in the
+form of a variable using "RobotC_recieve_data_from_arduino.c", still failure. after trying to get the arduino to print things to serial line using "arduino_as_sender", i determined that the function 
+"void receiveI2C(int bytesIn)" was not being called. decided to see again if i could send stuff to the arduino using "RobotC_send_data_to_arduino.c". renamed files to be more intuitive. worked around a lot with 
+"RobotC_recieve_data_from_arduino.c" and "Arduino_as_sender.c". failure, though determined that it was being called, but "Wire.endTransmission(true);". still trying to get it to send data.
+
+7 5 2015	Day 22
+______________________
+used "RobotC_recieve_data_from_arduino.c" and "Arduino_as_sender.c". got nxt to show a letter on the screen. determined that the I2Creply was accepting strings. decided to try to typecast a char into an int in robotc.
+set string being printed to I2Creply[0]. no print. set string being printed to "n". printed an "n". decided to make it print a "k" if I2Creply[0] == NULL. it printed "k". huh, looks like I2Creply[0] is equal to NULL. nxt became 
+unresponsive from RobotC's perspective. restarted everything, worked fine. 
+
+13 5 2015	Day 23
+______________________
+sent "arduino_as_slave_reciever_and_sender_example" to arduino. sent "RobotCSlaveSend" from website to nxt. failure. sent "RobotCSlaveSendAndRecieve" from website to nxt. failure. asked mein for help. general SNAFU. 
+used "arduino_as_slave_reciever_and_sender" and "RobotCSendAndRecieve".
+
+14 5 2015	Day 24
+______________________
+decided to look very closely at the website. opened up the code examples. downloaded "Arduino_as_slave_reciever_and_sender" to arduino, used the code that sent 2. failure. oh dear. sent "Arduino_as_reciever" to arduino.
+functioned. sent "robotcslavesendandrecieve" to nxt. mein worked on it for a goodly long time.
+
+18 5 2015	Day 25
+______________________
+Moved latest version of arduino onto computer. cleaned up the sending twos program. in a bid to understand said program, tried to set "I2Cmessage[4] = 3" to see if i would get "3"s out. i didn't. tried setting [3] to "2"
+instead of "message". still got "2"s. I therefore determine that "I2Cmessage[3]" is getting sent, god knows why. Decided to see if i could get the light to blink a varying amount of time depending on what number i sent.
+failure. attempted to see which bit of the "recieve" code was getting run, determined that the first bit was being read as a space and then the second was being read as a two. sent "RobotC - Arduino Send Example" to nxt.
+sent "NXT_SLAVE_RECIEVER" to arduino. NXT program did not compile. abandoned attempt. got to see if i could get arduino to blink using commands from the nxt. succeeded. using ArduinoLightProgram and RobotCLightProgram.
+decided to count hits using lights. determined that lights did not work on redboard. c'est la vie. also determined that the timesHit variable was reset upon opening the serial line. cut and printed new box. designed better
+program and board. shot at board for 150 sec, got to somewhere between 640 and 704 hits. taking it up one final pin should cover for a match. decided to add two, just in case. for reference, six pins total requires ~58 seconds
+of constant exposure to fill up. after this, decided to add 7th pin. provided a working robot, should be able to start testing soon.
+
+19 5 2015	Day 26
+______________________
+Found that hole in box design was not big enough nor in right spot. decided to drill it to make it so. also changed inkscape file so next one would not have same problem. Assembled device. tested device. decided to make new
+device. mein arrived. began to work on nxt. probably will get light system working, then move back to nxt because light system is pretty primitive. pillaged board and jumpers from sparkfun box. downloaded program to new board,
+functioned properly. returned jumpers, but not board. ate lunch. re-assembled wood robot. got gavin to come down and help me with wood robot. robot went forward and back shooting laser. made holder for box. 
+
+20 5 2015	Day 27
+______________________
+cut and glued holder, disassambled one of the light arduinos after mein mailed in between days stating got arduino to communicate. mein arrived. mein requested i work on getting the laser to turn on and off. balancing this
+versus getting more stable wheels. consulted briggs on wisdom of using digital output pins. approved. used that to get laser to turn on and off. thought about using three different pins at one-third power to decrease the load
+on each pin. disadvised by mein, who stated that the pins were pulse-width modulation pins, and that the change would be pointless. looked up pulse-width modulation, concurred with mein. also determined that the other, analog
+pins were equally pointless because their voltage could not be changed. mein noted that since lasers are diodes, red wire must go to output pin and blue wire must go to ground. IMPORTANT. worked on rover. ate lunch.
+worked on rover code.
+
+21 5 2015	Day 28
+______________________
+worked on rover. woked on gun turret. mein arrivved with transistors and other stuff. created github account. not terribly detailed, didn't open this file much on this day.
+
+22 5 2015	Day 29
+______________________
+downloaded github for windows. played around with it. soldered pins to laser. talked to briggs regarding transistor. got small screwdriver from same. soldered many things.
+
+
+18 9 2015	Day 30
+______________________
+Began to get reaquianted. the one with the light, laser_tag_program, is working fine. The ELF-Arduino board looks very different from the program. having a hard time figuring out how it works.
+
+24 9 2015	Day 31
+______________________
+decided to see if i could command the arduino via the command line. created a nice infographic about what each of the arduino pins does labeled "Board2.png". Created new version of ELF_arduino called "ELF_Arduino_V2". Put
+various pins in various places. made some functions to test basic functionality - turnLeft, turnRight, dance, flashyLaser, laserDance, etc. The servo works. The laser works.
+
+1 10 2015	Day 32
+______________________
+Decided to start with phone. Zach came over, started looking up phone stuff with me. Talked with team regarding robot stuff. https://github.com/SwerveRobotics/ftc_app. 
+
+
+2 10 2015	Day 33
+______________________
+Decided that goals are aligned with that of standard robotics team. Therefore, might as well work with them on the phone. Started charging phone. Began reading FTC forums. Began installing Android studio (they also allow MIT
+App Inventor). http://ftcforum.usfirst.org/forum.php. http://www.usfirst.org/roboticsprograms/ftc/team-resources.
+
+8 10 2015	Day 34
+______________________
+Worked on trying to understand Android studio. Went to instructables to try to learn. While stuff was downloading, I decided to try detecting hits again. Difficult. Used Program_for_laser_tag_sans_light in "files" to detect hits.
+
+15 10 2015	Day 35
+______________________
+No notes for the 9th because there was no school or robotics that day. Kept working through the android studio tutorial. Was joined by Trevor. He got another micro-usb. Started working on laser with HitDetectProg.ini. Removed a ground, started
+detecting hits more. determined that resistance increases with less light. IE if light increases, resistance decreases. 2.7 kiloohms with "ambient light", 15 kiloohms with fingers covering it. appropriated an old arduino
+box for its resistors. Looked at the stable version, copied that... it worked. In ELF_Arduino_2 at "Debugging. Getting weird stuff, continue next time.".
+
+16 10 2015	Day 36
+______________________
+Messed around with hit detection, made detectHits its own method. Determined that the increase in light reading depended on the level of ambient light. At ~430 ambient, a hit caused a 65 jump. At ~30 ambient, it was more 
+like 160. But actual laser will hit much harder than example laser. So kept at 100. Decided remove NXT communicator, making Board4. Decided to create new, improved box design and then create another Board4. The file is in RobotClub from
+desktop. 016MasonBox.svg. Have already extended box for better cup fit, still need to make holder for the servo.
+
+22 10 2015	Day 37
+______________________
+Finished up 16MasonBox. Laser cut on an already-cut piece of wood to ensure I was putting it in right. got up to 18mason box will need to cut.
+
+23 10 2015	Day 38
+______________________
+Same old same old. printing boxes... Printed 19MasonBox. Glued. It fits together quite well now. Will need laser, servo, 8 AA batteries, 8 AA battery holder, dual relay module for new copy. appropriated
+20 jumpers, 1 servo, 1 scredriver, 1 board from boxes. WILL NEED TO LOOK FOR MY OLD BOX!
+
+29 10 2015	Day 39
+______________________
+Miserably failed in an attempt to find my old box. Will need dual relay module and 8 aa battery holder from vetco. Dean went and got them. I embarrasingly forgot to include a converter from pack to wire. will need to do that.
+Possibly from battery in box? also solder. Also decided to design new box, but not print, to hold battery holder.
+
+5 11 2015	Day 40
+______________________
+Took break on the 30th. Found old box and a lot of other nice stuff in the unsorted box. soldered a lot of stuff. made a lot of progress.
+
+6 11 2015	Day 41
+______________________
+Laser_tag_program in files is the one for the stable laser with the lights and stuff. Decided that I need a more powerful laser or less resistance. But resistors in parallel didn't increase the power as measured by the other!
+Also, the lasers are less powerful than the test laser.
+
+12 11 2015	Day 42
+______________________
+Determined fairly definitively that the 3x D battery laser was brighter than the 8x AA battery laser. looked on wikipedia for amperage of each. D battery was 12,000. AA was 2,700. This would imply that 36,000 MAH for D
+batteries versus 21,600 for AAs. Decided to test with 16 AAs. The laser was unable to handle it and started smoking, at which point I disconnected the circuit hastily. Fortunately, and contrary to expectations, the laser
+was still functional with only 8 AAs. So this is an issue. The D laser hits a nice 140 points when ambient light is at 470, putting it well over the threshold of 570. The sketchy laser hardly registers, while the non-sketchy
+laser, it hits at 40-50. In comparison, moving it around the table i was on got anywhere between 440 and 530. In other news, Amazon was a much cheaper source of lasers than vetco - look it up when you need more. Those 
+wonderful Chinese. So I think there is a choice... move over to D batteries, or move up to maybe 12 AAs. I think now it would be better to think about controls. Talked to Trevor about helping me with it in the next few weeks.
+Was primarily involved in getting robot working, but would be fine after that. Decided to reoorganize stuff. Decided to retire stableboard, but not before documenting. will need to continue next time.
+
+13 11 2015	Day 43
+______________________
+Kept working on retiring stable board. Finished StableBoard.png. Retired board. Retired even older board as well. Did a lot of other recycling, such as the old NXT stuff. Printed a small addition, giving a complete box
+kit, ready to be glued. Did lots of packaging! Very satisfying.
+
+19 11 2015	Not really a day
+______________________
+Thought about lasers after finals. I think the options, moving forward, are getting another 3x D laser pack and then changing the box design, or using higher-powered batteries. The AA replacements would cost anywhere between
+$2 and $4 per battery, and would need maybe 5 or 6 batteries to work. So anywhere between $20 and $48 for a full working system. The D batteries, assuming we get a 12 pack, would be ~$1/battery and would require 3 to work. 
+This would cost $12 to work, plus the cost of the holder (maybe $2 to $8). So between $14 and $20. The only argument for the AA replacements, in my mind, are that they will be significantly lighter and rechargable. I should 
+bring in some AA replacements and test.
+
+3 12 2015	Day 44
+______________________
+Talked to Mr. Mein. Suggested we use D batteries. Long break, eh?. Found out that arduino can probably communicate with phone due to cable team uses for controller. Began working on phone case for robotics team.
+Printed, made some errors in height measurement.
+
+4 12 2015	Day 45
+______________________
+Kept working on phone case. Ran out of the 1/8 inch plywood and had to adapt design to 1/4 inch. It set me back quite a lot. Asked Mr. Mack if I could be certified, he said that would be implemented shortly but that for now
+I should just print. Mr. Mein was not pleased with me. However, upon checking my story ("I asked Mr. Mack") with Mr. Mack, he agreed to let me and Gavin to print if we both stayed in the room and made sure the cut went well.
+Made a few more errors, made some more corrections, didn't print b/c time.
+
+10 12 2015	Day 46
+______________________
+Received level 2 certification from Mack on the 8th. Informed Mein of the fact. Cut 04PhoneBox. Am gravely concerned about the new wood - the power is so high that the wood both burned once during the printing and cut
+a straight line not in file and refused to stop when stop was pressed (I turned it off and it ceased cutting. Had to whip up a new file to cut the rest) - though the two were at unrelated times. After some adjustments,
+the box will be ready to go... Will need to cut down the edges a little - its just a bit too wide to fit in between the x-frames - and glue it up... Not, you know, accessible or anything, but you can press all of the buttons
+and charge it and stuff. Really, it ended up being a phone case that you could screw on to a robot.
+
+11 12 2015	Day 47
+______________________
+Checked box with Trevor, Fisher, and Teis. Began glueing. Helped Henry Meng figure out the air compressor. Got the arduino to fire in ELF_Arduino_V4. Quite pleasant! Asked Trevor how hard it would be to implement on phone,
+he had no idea.
+
+7 1 2016	Day 48
+______________________
+Cleaned up ELF_Arduino_V5. Gave arduino more commands. Attempted to find communicator phone... it took a while. Charged it for some time. Worked on making a new box with D battery compatability.
+
+8 1 2016	Day 49
+______________________
+Designed, printed parts.
+
+14 1 2016	Day 50
+______________________
+Cut, glued box.
+
+15 1 2016	Day 51
+______________________
+Cut and glued some of the utter disaster that was 22MasonBox (squeezed bottle, cap popped off, went down hill from there :P). Still need to glue some parts... Decided to start working on the inevitable convertion to 1/4 in
+wood...
+
+28 1 2016	Day 52
+______________________
+GOT 200 NEW PIECES OF 0.125 INCH WOOD!!! YES!!! GLORIOUS!!! Worked on reversing the way the laser diode was installed.
+
+29 1 2016	Day 53
+______________________
+Finished installing new board. The new one looked less bright than the old one. Went about testing resistance.
+D batteries - around 11 megaohms internal resistance? don't believe it. 19.49? also don't believe. Wikipedia and energizer say less than an ohm. http://data.energizer.com/PDFs/EN95.pdf http://data.energizer.com/PDFs/BatteryIR.pdf
+Burned out a laser on a battery pack... Put a note on the laser and the pack. Decided to hell with it and to just do whatever works. Talked to Trevor. He said he would see what he could find over the weekend.
+
+4 2 2016	Day 54
+______________________
+Spent a long time trying to find the phones. Cleaned up code, made new version (ELF_Arduino_V6). Talked with Trevor. Soldered stuff. Got adapter cable from Team Blue. Difficulty connecting with app ArduinoCommander - looking
+in to that.
+
+5 2 2016	Day 55
+______________________
+Unfortunately team blue needed their cable back. This substantially delayed progress. Did some tests on the lasers. Got my very own one from QBowers! 
+
+25 2 2016	Day 56
+______________________
+Got stuff out, started charging phones. Attempted to connect arduino and robotphone with arduino to connect base again... breaks are brutal. Miserable failure. Tried more apps - UsbTerminal works perfectly. Turn left still
+doesn't work for chicken crap, though. Decided to try to get Robot program to communicate to UsbTerminal. Robot program freaked out due to no motor controller. Looked for motor controllers. Found them, but not their cables.
+Some in my USB bag, though. Cleaned up. Since the rest of the team is basically out of commission, i might have to build the robot myself... shouldn't take too long though, since I have something to look at.
+
+26 2 2016	Day 57
+______________________
+Spent a brutally long time looking for cables. Eventually found that the Arduino cables work for the core power distribution model (after trying everything else). Built power cables the old fashioned way... they work, but
+still can't get phone to recognize. And the lights aren't turning red, so the power cables probably don't work.
+
+11 3 2016	Day 58
+______________________
+10 was cancelled because of a power outage. Found cables... Fisher found some more connectors. Spent a lot of time trying to get the robot controller to even reckognize the non-robot. Determined that the configuration file 
+needed to have exactly the same motor ports and motors as the robot itself. THart_2 says robot should be done soon, so that is good.
+
+17 3 2016	Day 59
+______________________
+Attempted to get config set up. Rest of team rebuilding robot. Set up config, got it to communicate between phones. Laser cut a holder for the battery.
+
+24 3 2016	Day 60
+______________________
+No Robotics last Friday because of TedxEPS, no Robotics this Friday because of EBC week. Got some rubber bands from SAllen, put some electronics on the robot. Assembled a pretty messy version of the robot, shot some lasers. 
+Need someone who actually knows what they are doing with the config file for much more progress, though.
+
+14 4 2016	Day 61
+______________________
+Very confused after so much time away, but nonetheless enthusiastic now that Trevor is back. Good progress by other people on the team. Looked at box designs, created Old folder. Won't need to cut too many more.
+Photoresistor - dark is more resistance, light is less. Worked on lasers and boards.
+
+15 4 2016	Day 62
+______________________
+Continued working on lasers while Trevor coded. The more resistance in the second part of the sensor array, the higher the voltage. with 10 kohm, reads plox 800. with 330 ohm, reads ~100. with 0, 0.
+Bigbat increases 50 points, plox 10%, when hit with 10kohm. Bigbat increases 7 points with 330 ohm, plox 25%. Similar with 165 ohm.
+
+21 4 2016	Day 63
+______________________
+Worked on new relay. Talked with Trevor, sent him code. After more thought, i don't think the relay will work because I don't know the threshold. Instead, I will try the Smallbat and see if it works. Modeled outValue as a
+function of inputValue (how much will the laser count depending on the light level?). Attempted to find out how many watts the laser was using. 3.25 volts going in, but couldn't get resistance or milliamps :(.
+
+22 4 2016	Day 64
+______________________
+After experimenting with the physics equipment, I determined that the multimeters can't detect amperage for crap. They also aren't so hot at resistance. Measured voltage of smallbat at ~9 volts. more charged one at 13.4
+volts. With the 5 * 10^-3 amps, that means it would burn out at 2680 ohms. Yet my measurements of the circuit resistance is ~1.4 * 10^7 ohms, and that of the laser itself at ~6 * 10^6 ohms by calculation and 2.87 * 10^6 ohms
+by direct measurement. 2.3 and 0.97, depending on the laser. All of these are dramatically more than 2680 ohms. I will try removing resistors - lasers are cheap on Amazon. 3.7 volts before at the laser. 6.91 after. Given that
+it is 324 ohm resistor... Did math:
+9/{xOut + xResist + xLas} = 3.7/xLas
+9/{xOut + 324 + xLas} = 3.7/xLas
+9xLas = 3.7 {xOut + 324 + xLas}
+9xLas = 3.7xOut + 1198.8 + 3.7xLas
+5.3xLas = 3.7xOut + 1198.8
+9/{xOut + xLas} = 7/xLas
+9xLas = 7xOut + 7xLas
+2xLas = 7xOut
+5.3xLas = 18.55xOut
+5.3xLas = 3.7xOut + 1198.8
+18.55xOut = 3.7xOut + 1198.8
+14.85xOut = 1198.8
+xOut = 80.727272…
+xLas = xLas = 284.54545454…
+This would imply:
+7 volts/284 ohms = 24.65 * 10^-3 amps
+24.65 * 10^-3 amps * 7 volts = 175.54 * 10^-3 watts
+Let's look at 3.7 volts:
+3.7 volts/284 ohms = 13.03 * 10^-3 amps
+13.03 * 10^-3 amps * 3.7 volts = 48.20 * 10^-3 watts
+So this says that with a resistor, it is running at about ten times the manufacturer's maximum wattage. Very nice to get some actual numbers, though. Asked GMein to order some more lasers, he approved. At 10 for $2.63, it was
+a good deal. I should test to see what the maximum I can run the laser at before it poofs. With the more charged pack, the laser don't light up no matter which +- orientation it is plugged in. Still lights up afterward,
+though, so it wasn't blown. Let's run the math:
+13.4/{xOut + xResist + xLas} = voltage/xLas
+13.4/{690} = voltage/280    //voltage = ~5.44 volts. So it definitely didn't blow. Will need to test more next time. v2/r = 42.88927536231884057971014492754 ma.
+Repeated:
+resistanceRemainder = 80.727272…
+resistanceLaser = 284.54545454…
+
+28 4 2016	Day 65
+______________________
+Small battery, resistor:
+8/{690} = voltage/280
+37.63915143877336693971854652384 mw    //Survived
+Small battery, no resistor:
+8/{360} = voltage/280
+138.27160493827160493827160493827 mw    //Survived
+Charged battery, resistor:
+12/{690} = voltage/280
+84.68809073724007561436672967864 mw    //Survived
+Charged battery, half resistor:
+12/{525} = voltage/280
+146.28571428571428571428571428571 mw    //Survived
+Charged battery, third resistor:
+12/{470} = voltage/280
+182.52602987777274784970574920779 mw    //Survived
+Charged battery, fourth resistor:
+12/{442.5} = voltage/280
+205.91783970123527721918988796323 mw    //Survived
+Charged battery, 6th resistor:
+12/{415} = voltage/280
+234.11235302656408767600522572217 mw    //Survived
+Charged battery, 8th resistor:
+12/{401.25} = voltage/280
+250.43235217049523975893091099659 mw    //Survived
+Charged battery, no resistor:
+12/{360} = voltage/280
+311.11111111111111111111111111111 mw    //Survived
+Tested the laser extensively to determine the maximum amperage.I also asked CWhitmer to help me with a poor connection in the charged battery pack. Very hard - eventually GMein came over and found that the springs weren't 
+streched enough. GMein asked what I was doing. Replied with resistance of laser.
+
+5 5 2016	Day 66
+______________________
+both batteries, 3 resistors:
+21/{470} = voltage/280    //Calculation is (20/470*280)^2/280
+558.98596650067904028972385694885 mw    //Survived but it was looking weak.
+
+Charged battery, no resistors:
+20/{360} = voltage/280    //I made a slight mistake and consumed a lot of battery power. c'est la vie.
+864.1975308641975308641975308642 mw    //Didn't survive.
+
+Stopped doing Robotics around 4 and started doing Fusor stuff. 16-17 volts with no resistors seems like a good sustainable voltage. Helped GMein sort coats. Tomorrow I should try both packs, 3 resistors, and test the hitting
+power.
+
+6 5 2016	Day 67
+______________________
+Conclusions:
+10k resistor with the photoresistor.
+No resistor in between the battery and the laser.
+~16-17 volts. I.E. well-charged batteries of 1.8 volts. More is better.
+Lasers die over time. Quite substantially. But at 26 cents a pop, lasers are expendable. Finished up the boxes, replacing lasers and stuff. Shouldn't need anything but the code now.
+http://developer.android.com/guide/topics/connectivity/usb/index.html
+
+12 5 2016	Day 68
+______________________
+Sent pull request to EPS_ELF with all the changes. Trevor was not present, which was sad because it restricts progress. HMeng sent me the github repository for the code. Trying to get USB to work.
+C:\Users\mkoch\Desktop\EPS-FTC-master\FtcRobotController\src\main\java\com\qualcomm\ftcrobotcontroller\opmodes k9tank.java:
+
+import java.lang.Object
+.android.hardware.usb;
+
+init{
+UsbManager laserManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+private static final String ACTION_USB_PERMISSION =
+    "com.android.example.USB_PERMISSION";
+...
+mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+}
+
+HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
+while(deviceIterator.hasNext()){
+    UsbDevice device = deviceIterator.next();
+    //your code
+}
+
+private static final String ACTION_USB_PERMISSION =
+    "com.android.example.USB_PERMISSION";
+private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if (ACTION_USB_PERMISSION.equals(action)) {
+            synchronized (this) {
+                UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+
+                if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+                    if(device != null){
+                      //call method to set up device communication
+                   }
+                } 
+                else {
+                    Log.d(TAG, "permission denied for device " + device);
+                }
+            }
+        }
+    }
+};
+
+
+private Byte[] bytes;
+private static int TIMEOUT = 0;
+private boolean forceClaim = true;
+
+...
+
+UsbInterface intf = device.getInterface(0);
+UsbEndpoint endpoint = intf.getEndpoint(0);
+UsbDeviceConnection connection = mUsbManager.openDevice(device); 
+connection.claimInterface(intf, forceClaim);
+connection.bulkTransfer(endpoint, bytes, bytes.length, TIMEOUT);
+
+
+BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction(); 
+
+      if (UsbManager.ACTION_USB_DEVICE_DETACHED.equals(action)) {
+            UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+            if (device != null) {
+                // call your method that cleans up and closes communication with the device
+            }
+        }
+    }
+};
+
+if (gamepad1.right_trigger > 0.25) {
+
+	//Shoot laser
+}
+
+All from: http://developer.android.com/guide/topics/connectivity/usb/host.html
+Should consult with Trevor tomorrow. Or else slug through on my own.
+
+13 5 2016	Day 69
+______________________
+Trevor not here. Tried to grind my way through Android Studio. Failed. In light of the number of days remaining, decided to work on creating stuff for the next person.
+
+26 5 2016	Day 70
+______________________
+Arrived late on 19th due to senior retreat, no Robotics on 20th. Last session. Commited to GitHub after watching gravity racers with rest of robotics team.
+
+
+Big problems:
+Sending commands to it via Java. Requires someone who actually knows what they are doing.
+
+
+
+
+
+
+
+
